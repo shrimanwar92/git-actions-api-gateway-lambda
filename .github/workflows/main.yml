@@ -1,0 +1,20 @@
+name: GitHub Actions Demo API Gateway-lambda for Backup/Restore framework
+run-name: ${{ format('API Endpoint {0}', inputs.selectLambda) }} is selected... 🚀
+on:
+  workflow_dispatch:
+    inputs:
+      selectLambda:
+        type: choice
+        required: true
+        description: Select the lambda to execute
+        options: 
+        - "lambda-appdr"
+        - "lambda-tooldr"
+jobs:
+  update:
+    name: ${{ format('Lambda {0}', inputs.selectLambda) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run API gateway endpoint using curl
+        run: |
+          curl -X GET ${{ format('https://unxmpqb86h.execute-api.us-east-1.amazonaws.com/dev/{0}', inputs.selectLambda) }}
