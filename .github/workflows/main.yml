@@ -21,5 +21,7 @@ jobs:
           curl -X GET ${{ format('https://unxmpqb86h.execute-api.us-east-1.amazonaws.com/dev/{0}', inputs.selectLambda) }} > response.json
           echo "COMMAND_ID=$(jq '.body | fromjson | .CommandId' response.json)" >> $GITHUB_OUTPUT
           echo "INSTANCE_ID=$(jq '.body | fromjson | .InstanceId' response.json)" >> $GITHUB_OUTPUT
+      - name: Print outputs
+        run: |
           echo "The selected command id is ${{ steps.curl.outputs.COMMAND_ID }}"
           echo "The selected instance id is ${{ steps.curl.outputs.INSTANCE_ID }}"
