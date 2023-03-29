@@ -19,5 +19,7 @@ jobs:
         id: curl
         run: |
           curl -X GET ${{ format('https://unxmpqb86h.execute-api.us-east-1.amazonaws.com/dev/{0}', inputs.selectLambda) }} > response.json
-          echo "CommandId=$(jq -r '.body' response.json)" >> $GITHUB_OUTPUT
+          echo "CommandId=$(jq '.body | fromjson | .CommandId' response.json)" >> $GITHUB_OUTPUT
+          echo "InstanceId=$(jq '.body | fromjson | .InstanceId' response.json)" >> $GITHUB_OUTPUT
           echo $CommandId
+          echo $InstanceId
