@@ -1,1 +1,30 @@
+name: Calling lambda from nodejs script
 
+on:
+  workflow_dispatch:
+    inputs:
+      selectLambda:
+        type: choice
+        required: true
+        description: Select the lambda to execute
+        options: 
+        - "lambda-appdr"
+        - "lambda-tooldr"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup nodejs env
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      
+      - name: Run nodejs script to invoke api
+        run: node ssm.js
+        env:
+          ENDPOINT: ${{ inputs.selectLambda }}
