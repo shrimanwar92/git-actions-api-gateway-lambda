@@ -11,6 +11,7 @@ async function invokeAPI() {
 
 function ping() {
     console.log("this is just the message")
+    console.log(process.env['ENDPOINT'])
 }
 
 invokeAPI()
