@@ -13,7 +13,7 @@ jobs:
       - name: save current date
         run: |
           # do some operation that changes a file in the git repo
-          date > ./github/workflows/time.txt
+          date > ./.github/workflows/time.txt
 
       - name: setup git config
         run: |
