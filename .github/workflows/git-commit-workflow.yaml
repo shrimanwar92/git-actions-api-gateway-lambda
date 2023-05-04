@@ -9,6 +9,8 @@ jobs:
       # Checkout the branch
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{secrets.GHPAT}}
 
       - name: save current date
         run: |
