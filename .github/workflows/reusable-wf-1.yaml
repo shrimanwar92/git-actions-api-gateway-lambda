@@ -1,0 +1,17 @@
+name: workflow for dynamodb restore
+on:
+  workflow_call:
+    inputs:
+      backup-arns:
+        type: choice
+		    options: 
+          - arn1
+          - arn2
+		      - arn3
+		      - arn4
+	    account:
+	      type: string
+		    default: 12345678
+	    table:
+	      type: string
+		    default: test-db
