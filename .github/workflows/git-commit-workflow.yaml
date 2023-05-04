@@ -1,7 +1,9 @@
 name: Commit date to main branch
 on: push
+permissions:
+  contents: write
 jobs:
-  date:
+  commit-date:
     runs-on: ubuntu-latest
     steps:
       # Checkout the branch
